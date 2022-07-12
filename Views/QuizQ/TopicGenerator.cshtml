@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QUIZ.Models.TopicTable>
+
+@{
+    ViewData["Title"] = "TopicGenerator";
+}
+
+<h2>List Of Topics</h2>
+@Html.Raw( TempData["DeleteForTopic"])
+<style>
+    .table a{
+        
+    }
+    .table tr{
+        padding:50px;
+    }
+    .table a:hover{
+        text-decoration:none;
+        color:rgba(156, 29, 207, 0.86);
+    }
+</style>
+
+<table class="table ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TopicName)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+        
+            <td>
+                <a class="tab-content" asp-action="Index" asp-route-id="@item.TopicId">@item.TopicName</a> 
+ 
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+            <td>
+                <a class="tab-content alert-danger" asp-action="DeleteForTopic" asp-route-id="@item.TopicId">Delete</a>
+            </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>

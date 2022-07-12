@@ -1,0 +1,58 @@
+﻿@model IEnumerable<QUIZ.Models.ScoreRecorder>
+
+@{
+    ViewData["Title"] = "GetResult";
+}
+
+<h2>GetResult</h2>
+@Html.Raw(TempData["DeleteForScore"])
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.user.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.topicTable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalNoOfQuestions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Submitted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.user.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.topicTable.TopicName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalNoOfQuestions)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Submitted)
+            </td>
+            <td>
+              
+                <a asp-action="DeleteForScore" asp-route-id="@item.ScoreId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

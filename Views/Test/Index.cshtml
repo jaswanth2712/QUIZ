@@ -1,0 +1,32 @@
+﻿@model QUIZ.Models.LoginModel
+<!--<h4>LoginModel</h4>-->
+@*@Html.Raw(TempData["InsMsg"])
+    @Html.ActionLink("Create New Account","Register","Test")*@
+
+<div class="d-flex justify-content-center bg-info">
+    <h1 class="d-flex justify-content-center">Admin Page</h1>
+
+    <div class="col-md-4" style="backface-visibility:visible">
+        <form asp-action="Index" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="visibility:hidden;">
+                <label asp-for="ID" class="control-label"></label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Login" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>

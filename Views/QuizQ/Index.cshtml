@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="d-flex justify-content-center">
+    <form asp-controller="QuizQ" asp-action="CheckAnswer">
+        @foreach (var Questions in ViewBag.Questions)
+        {
+            <ol type="1">
+                <li>
+                    @Questions.QuestionName
+                    <input type="hidden" name="questionid" value="@Questions.QuestionId" />
+                    <ol type="a">
+                        @foreach (var item in Questions.answerTable)
+                        {
+                            var temp = item.AnswerType;
+
+                            @if (temp.ToString().Equals("Radio"))
+                            {
+                                <li>
+                                    <input type="radio" name="question_@Questions.QuestionId" value="@item.AnswerId" />@item.AnswerName
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li>
+                                    <input type="checkbox" name="question_@Questions.QuestionId" value="@item.AnswerId" />@item.AnswerName
+                                </li>
+                            }
+                        }
+                    </ol>
+                </li>
+            </ol>
+        }
+        <input type="submit" value="Finish" />
+    </form>
+</div>
